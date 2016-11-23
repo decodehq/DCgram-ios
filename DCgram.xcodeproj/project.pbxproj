@@ -12,6 +12,7 @@
 		7D86CF031DE5CD930089CB20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF011DE5CD930089CB20 /* Main.storyboard */; };
 		7D86CF051DE5CD930089CB20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF041DE5CD930089CB20 /* Assets.xcassets */; };
 		7D86CF081DE5CD930089CB20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF061DE5CD930089CB20 /* LaunchScreen.storyboard */; };
+		A2882767623B21D90FA032B7 /* Pods_DCgram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2777363D035AE699CE515D /* Pods_DCgram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		7D86CF041DE5CD930089CB20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D86CF071DE5CD930089CB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86CF091DE5CD930089CB20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF4282070AF1C9797A5608F1 /* Pods-DCgram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCgram.release.xcconfig"; path = "Pods/Target Support Files/Pods-DCgram/Pods-DCgram.release.xcconfig"; sourceTree = "<group>"; };
+		DC2777363D035AE699CE515D /* Pods_DCgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8406769DA6E232D8006FA84 /* Pods-DCgram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCgram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DCgram/Pods-DCgram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2882767623B21D90FA032B7 /* Pods_DCgram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		268653D4E4B8B13B5C979A9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC2777363D035AE699CE515D /* Pods_DCgram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		447F2976E34B7A2E8CA282FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8406769DA6E232D8006FA84 /* Pods-DCgram.debug.xcconfig */,
+				AF4282070AF1C9797A5608F1 /* Pods-DCgram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7D86CEF11DE5CD930089CB20 = {
 			isa = PBXGroup;
 			children = (
 				7D86CEFC1DE5CD930089CB20 /* DCgram */,
 				7D86CEFB1DE5CD930089CB20 /* Products */,
+				447F2976E34B7A2E8CA282FE /* Pods */,
+				268653D4E4B8B13B5C979A9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D86CF0C1DE5CD930089CB20 /* Build configuration list for PBXNativeTarget "DCgram" */;
 			buildPhases = (
+				FC2E583080FF3435200E41ED /* [CP] Check Pods Manifest.lock */,
 				7D86CEF61DE5CD930089CB20 /* Sources */,
 				7D86CEF71DE5CD930089CB20 /* Frameworks */,
 				7D86CEF81DE5CD930089CB20 /* Resources */,
+				C5405591D0A6E7A5404270DD /* [CP] Embed Pods Frameworks */,
+				C1E9D57C03A7E7F1CDF7D59B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C1E9D57C03A7E7F1CDF7D59B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DCgram/Pods-DCgram-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5405591D0A6E7A5404270DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DCgram/Pods-DCgram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC2E583080FF3435200E41ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D86CEF61DE5CD930089CB20 /* Sources */ = {
@@ -257,6 +332,7 @@
 		};
 		7D86CF0D1DE5CD930089CB20 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8406769DA6E232D8006FA84 /* Pods-DCgram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y8Z27FN9Z7;
@@ -270,6 +346,7 @@
 		};
 		7D86CF0E1DE5CD930089CB20 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF4282070AF1C9797A5608F1 /* Pods-DCgram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y8Z27FN9Z7;
