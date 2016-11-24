@@ -119,7 +119,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = "Vladimir Kolbas";
+				ORGANIZATIONNAME = "DECODE HQ";
 				TargetAttributes = {
 					7D86CEF91DE5CD930089CB20 = {
 						CreatedOnToolsVersion = 8.1;
