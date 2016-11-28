@@ -6,5 +6,7 @@ target 'DCgram' do
   use_frameworks!
 
   # Pods for DCgram
+  
+  pod 'DCKit', :git => 'https://bitbucket.org/decodehq/dckit.git', :branch => 'swift-3.0'
 
 end

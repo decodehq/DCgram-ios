@@ -1,0 +1,29 @@
+{
+  "name": "DCKit",
+  "version": "0.3.0",
+  "license": {
+    "type": "BSD"
+  },
+  "homepage": "http://www.decode.agency",
+  "authors": {
+    "Vladimir Kolbas": "vladimir.kolbas@decode.agency"
+  },
+  "summary": "DC helpers and extensions",
+  "source": {
+    "git": "https://bitbucket.org/decodehq/dckit.git",
+    "tag": "0.3.0"
+  },
+  "source_files": [
+    "DCKit",
+    "DCKit/VC Custom Transitioning"
+  ],
+  "requires_arc": true,
+  "platforms": {
+    "ios": "8.0"
+  },
+  "dependencies": {
+    "SnapKit": [
+
+    ]
+  }
+}
