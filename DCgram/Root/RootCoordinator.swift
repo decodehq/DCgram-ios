@@ -28,7 +28,7 @@ class RootCoordinator: Coordinator {
     }
     
     private func updateState() {
-        let authenticated = true //TODO: get this info from session manager
+        let authenticated = false //true //TODO: get this info from session manager
         
         if authenticated {
             let coordinator = AuthenticatedCoordinator(rootViewController: rootViewController)
