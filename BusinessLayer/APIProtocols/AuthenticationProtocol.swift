@@ -6,6 +6,6 @@
 //  Copyright © 2016 DECODE HQ. All rights reserved.
 //
 
-protocol AuthenticationProtocol {
-    
+public protocol AuthenticationProtocol {
+    func signIn(googleIDToken: String, googleAccessToken: String, completion: ((NSError?) -> ())?)
 }

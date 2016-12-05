@@ -5,19 +5,14 @@
 
 use_frameworks!
 
-def signin_pods
-    pod 'Google/SignIn'
-end
-
 target 'DCgram' do
     # Pods for DCgram
     pod 'DCKit', :git => 'https://bitbucket.org/decodehq/dckit.git', :branch => 'swift-3.0'
-    
     pod 'SnapKit'
     
-    signin_pods
-end
+    pod 'Google/SignIn'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
 
-target 'BusinessLayer' do
-    signin_pods
 end

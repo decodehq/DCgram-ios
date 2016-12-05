@@ -6,6 +6,6 @@
 //  Copyright © 2016 DECODE HQ. All rights reserved.
 //
 
-protocol APIProtocol: AuthenticationProtocol {
+public protocol APIProtocol: AuthenticationProtocol {
     
 }

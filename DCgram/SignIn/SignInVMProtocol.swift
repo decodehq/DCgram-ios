@@ -6,4 +6,7 @@
 //  Copyright © 2016 DECODE HQ. All rights reserved.
 //
 
-import Foundation
+import  Foundation
+protocol SignInVMProtocol {
+    func signIn (googleIDToken:String, googleAccessToken: String, completion: ((NSError?) -> ())?)
+}
