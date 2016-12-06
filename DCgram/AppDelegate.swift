@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var rootCoordinator: RootCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        let api = FirebaseConnector()
+        Business.configure(api: api)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -25,5 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {        
+        return GIDSignIn.sharedInstance().handle(
+            url,
+            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
 }
-
