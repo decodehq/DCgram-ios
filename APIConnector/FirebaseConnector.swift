@@ -22,8 +22,10 @@ extension FirebaseConnector: AuthenticationProtocol {
             accessToken: googleAccessToken
         )
         
-        FIRAuth.auth()!.signIn(with: credential) { result in
-            print(result)
-        }
+        
+        
+        FIRAuth.auth()!.signIn(with: credential, completion: { (user, error) in
+            completion?(error as NSError?)
+        } as FIRAuthResultCallback)
     }
 }

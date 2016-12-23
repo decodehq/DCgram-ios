@@ -38,4 +38,8 @@ class NotAuthenticatedCoordinator: Coordinator {
             make.edges.equalToSuperview()
         }
     }
+    
+    deinit {
+        signInVC.dc_detachVCFromParentVC()
+    }
 }
