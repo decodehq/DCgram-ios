@@ -58,6 +58,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - GTMSessionFetcher/Full (1.1.7):
     - GTMSessionFetcher/Core (= 1.1.7)
+  - KeychainAccess (3.0.1)
   - SnapKit (3.0.2)
 
 DEPENDENCIES:
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Google/SignIn
+  - KeychainAccess
   - SnapKit
 
 EXTERNAL SOURCES:
@@ -94,8 +96,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: f8e85b3b7393be6b678906bd037e2e284c65c68b
+PODFILE CHECKSUM: a80d292d8b32d32eeea983ddddf61ec8605dd48d
 
 COCOAPODS: 1.1.1

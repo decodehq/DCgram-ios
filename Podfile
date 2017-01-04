@@ -9,10 +9,10 @@ target 'DCgram' do
     # Pods for DCgram
     pod 'DCKit', :git => 'https://bitbucket.org/decodehq/dckit.git', :branch => 'swift-3.0'
     pod 'SnapKit'
+    pod 'KeychainAccess'
     
     pod 'Google/SignIn'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
-
 end
