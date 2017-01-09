@@ -7,5 +7,7 @@
 //
 
 public protocol AuthenticationProtocol {
+    var signedIn: Bool {get}
     func signIn(googleIDToken: String, googleAccessToken: String, completion: ((NSError?) -> ())?)
+    func signOut(completion: ((NSError?) -> ())?)
 }
