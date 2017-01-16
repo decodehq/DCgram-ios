@@ -14,6 +14,20 @@ public class FirebaseConnector: NSObject, APIProtocol {
 }
 
 extension FirebaseConnector: AuthenticationProtocol {
+    public var signedIn: Bool {
+        get {            
+            return FIRAuth.auth()?.currentUser != nil
+        }
+    }
+    
+    public func signOut(completion: ((NSError?) -> ())?) {
+        do {
+            try FIRAuth.auth()?.signOut()
+            completion?(nil)
+        } catch let signOutError as NSError {
+            completion?(signOutError)
+        }
+    }
     
     public func signIn(googleIDToken: String, googleAccessToken: String, completion: ((NSError?) -> ())?) {
         
@@ -22,8 +36,8 @@ extension FirebaseConnector: AuthenticationProtocol {
             accessToken: googleAccessToken
         )
         
-        FIRAuth.auth()!.signIn(with: credential) { result in
-            print(result)
-        }
+        FIRAuth.auth()!.signIn(with: credential, completion: { (user, error) in
+            completion?(error as NSError?)
+        } as FIRAuthResultCallback)
     }
 }

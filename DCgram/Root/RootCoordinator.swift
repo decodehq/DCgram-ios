@@ -12,8 +12,6 @@ class RootCoordinator: Coordinator {
     
     private let window: UIWindow
     
-    private var authenticated = false //true //TODO: get this info from session manager
-    
     init(window: UIWindow) {
         self.window = window
         
@@ -32,7 +30,7 @@ class RootCoordinator: Coordinator {
     private func updateState() {
         
         
-        if authenticated {
+        if AuthenticationService.signedIn {
             let coordinator = AuthenticatedCoordinator(rootViewController: rootViewController)
             addChildCoordinator(childCoordinator: coordinator)
             
@@ -49,7 +47,6 @@ class RootCoordinator: Coordinator {
             unowned(unsafe) let coordinator_ = coordinator
             coordinator.onEnding = { [weak self] in
                 self?.removeChildCoordinator(childCoordinator: coordinator_)
-                self?.authenticated = true
                 self?.updateState()
             }
             

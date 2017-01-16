@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let api = FirebaseConnector()
         Business.configure(api: api)
         
+        if Application.firstRun {
+            AuthenticationService.signOut(completion: nil)
+            Application.firstRun = false
+        }
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         
         rootCoordinator = RootCoordinator(window: window!)
