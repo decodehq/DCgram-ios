@@ -17,4 +17,9 @@ class SearchCoordinator: Coordinator {
         
         super.init(rootViewController: rootNavigationController)
     }
+    
+    override func start() {
+        let vc = SearchRootVC()
+        rootNC.pushViewController(vc, animated: true)
+    }
 }
