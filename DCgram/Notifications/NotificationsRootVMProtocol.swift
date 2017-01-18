@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+protocol NotificationsRootVMProtocol {
+    
+    var reloadItems: (() -> ())? {get set}
+    
+    var numberOfItems: Int { get }
+    var currentIndex: Int {get}
+    func title(for index: Int) -> String
+    func image(for index: Int) -> UIImage
+    
+    func updateItems()
+    func selectItem(at index: Int)
+}

@@ -46,6 +46,8 @@
 		7D86CEFE1DE5CD930089CB20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86CEFD1DE5CD930089CB20 /* AppDelegate.swift */; };
 		7D86CF051DE5CD930089CB20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF041DE5CD930089CB20 /* Assets.xcassets */; };
 		7D86CF081DE5CD930089CB20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF061DE5CD930089CB20 /* LaunchScreen.storyboard */; };
+		B9B77C631E2FA279006775FA /* NotificationsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C621E2FA279006775FA /* NotificationsRootView.swift */; };
+		B9B77C651E2FAC46006775FA /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,6 +110,8 @@
 		7D86CF071DE5CD930089CB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86CF091DE5CD930089CB20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903839FE59AE1550461B71F9 /* Pods-APIConnector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIConnector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APIConnector/Pods-APIConnector.debug.xcconfig"; sourceTree = "<group>"; };
+		B9B77C621E2FA279006775FA /* NotificationsRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsRootView.swift; sourceTree = "<group>"; };
+		B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		C120AADFC9CAC2966D037201 /* Pods-APIConnector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIConnector.release.xcconfig"; path = "Pods/Target Support Files/Pods-APIConnector/Pods-APIConnector.release.xcconfig"; sourceTree = "<group>"; };
 		EEBD2D4704D31944DD4262A5 /* Pods_DCgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,6 +200,8 @@
 				6AD5AFDF1E252A1300533FE3 /* NotificationsCoordinator.swift */,
 				6AD5AFE11E252A2600533FE3 /* NotificationsNC.swift */,
 				6AD5AFE31E252A3400533FE3 /* NotificationsRootVC.swift */,
+				B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */,
+				B9B77C621E2FA279006775FA /* NotificationsRootView.swift */,
 				6AD5AFE51E252A4200533FE3 /* NotificationsRootVM.swift */,
 				6AD5AFE71E252A5700533FE3 /* NotificationsRootVMProtocol.swift */,
 			);
@@ -457,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AD5AFE01E252A1300533FE3 /* NotificationsCoordinator.swift in Sources */,
+				B9B77C651E2FAC46006775FA /* NotificationsTableViewCell.swift in Sources */,
 				6AD5AFE81E252A5700533FE3 /* NotificationsRootVMProtocol.swift in Sources */,
 				6AD5AFF41E252AA700533FE3 /* FeedCoordinator.swift in Sources */,
 				6AD5AFF01E252A8E00533FE3 /* SearchRootVM.swift in Sources */,
@@ -479,6 +486,7 @@
 				6A0FC28F1DF1A83B001E9A50 /* Business.swift in Sources */,
 				6AD5AFEA1E252A6B00533FE3 /* SearchCoordinator.swift in Sources */,
 				6ADFDE921E2D00AA00B570AC /* Color.swift in Sources */,
+				B9B77C631E2FA279006775FA /* NotificationsRootView.swift in Sources */,
 				6AD5AFE61E252A4200533FE3 /* NotificationsRootVM.swift in Sources */,
 				6A10C1D81DEDAE2F001A3BE2 /* SignInVC.swift in Sources */,
 				6AD5AFF21E252A9B00533FE3 /* SearchRootVMProtocol.swift in Sources */,
