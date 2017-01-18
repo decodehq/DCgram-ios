@@ -16,7 +16,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "placeholder-image")
+        imageView.image = ImageAssets.placeholderImage
         return imageView
     }()
     

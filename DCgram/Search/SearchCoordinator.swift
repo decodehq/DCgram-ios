@@ -19,7 +19,8 @@ class SearchCoordinator: Coordinator {
     }
     
     override func start() {
-        let vc = SearchRootVC()
+        let vm = SearchRootVM()
+        let vc = SearchRootVC(viewModel: vm)
         rootNC.pushViewController(vc, animated: true)
     }
 }
