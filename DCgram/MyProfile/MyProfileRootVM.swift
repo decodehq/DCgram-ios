@@ -9,5 +9,15 @@
 import Foundation
 
 class MyProfileRootVM: MyProfileRootVMProtocol {
+    func getNumberOfSections() -> Int {
+        return 1
+    }
     
+    func getNumberOfItemsInSection() -> Int {
+        return 20
+    }
+    
+    func getImage(for item: Int) -> UIImage? {
+        return ImageAssets.cameraTabBarITem
+    }
 }

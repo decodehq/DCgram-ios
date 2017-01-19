@@ -17,10 +17,16 @@ class MyProfileRootView: UIView {
         static let contentInset = UIEdgeInsets(top: 15, left: 16, bottom: 16, right: 16)
     }
     
-    private(set) var followersCountLabel: UILabel!
-    private(set) var followedCountLabel: UILabel!
+    private(set) var followersCount: String?
+    private(set) var followedCount: String?
     
-    private(set) lazy var searchCollectionView: UICollectionView = {
+    private(set) var followersButton: UIButton!
+    private(set) var followedButton: UIButton!
+    
+    private(set) var nameLabel: UILabel!
+    private(set) var aboutLabel: UILabel!
+    
+    private(set) lazy var photosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
         layout.minimumLineSpacing = 0
@@ -52,23 +58,40 @@ class MyProfileRootView: UIView {
         profileImageView.image = profileImage
         profileImageView.contentMode = .scaleAspectFill
         
-        followersCountLabel = UILabel()
-        followedCountLabel = UILabel()
+        followersButton = UIButton()
+        followersButton.titleLabel?.lineBreakMode = .byWordWrapping
+        followersButton.setTitle("\(followersCount)\n\(Constants.kTextFollowersLabelTitle)", for: .normal)
+        followersButton.setTitleColor(Color.titleBlackColor, for: .normal)
+        followersButton.sizeToFit()
         
-        let followersLabel = UILabel()
-        followersLabel.text = Constants.kTextFollowersLabelTitle
-        let followedLabel = UILabel()
-        followedLabel.text = Constants.kTextFollowedLabelTitle
+        followedButton = UIButton()
+        followedButton.titleLabel?.lineBreakMode = .byWordWrapping
+        followedButton.setTitle("\(followedCount)\n\(Constants.kTextFollowedLabelTitle)", for: .normal)
+        followedButton.setTitleColor(Color.titleBlackColor, for: .normal)
+        followedButton.sizeToFit()
         
-        let followersStackView = UIStackView(arrangedSubviews: [followersCountLabel, followersLabel])
-        let followedStackView = UIStackView(arrangedSubviews: [followedCountLabel, followedLabel])
+        let connectionsStackView = UIStackView(arrangedSubviews: [followersButton, followedButton])
+        connectionsStackView.axis = .horizontal
+        connectionsStackView.spacing = 6
         
-        let connectionsInfoStackView = UIStackView(arrangedSubviews: [followersStackView, followedStackView])
-        connectionsInfoStackView.axis = .horizontal
+        let stackViewSeparatorLine = UIView()
+        stackViewSeparatorLine.backgroundColor = Color.backgroundGrayColor
+        
+        nameLabel = UILabel()
+        nameLabel.textColor = Color.titleBlackColor
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        
+        aboutLabel = UILabel()
+        aboutLabel.textColor = Color.titleBlackColor
+        aboutLabel.font = UIFont.systemFont(ofSize: 12)
         
         profileInfoView.addSubview(profileImageView)
         profileInfoView.addSubview(profileSeparatorLine)
-        profileInfoView.addSubview(connectionsInfoStackView)
+        profileInfoView.addSubview(connectionsStackView)
+        profileInfoView.addSubview(nameLabel)
+        profileInfoView.addSubview(aboutLabel)
+        
+        connectionsStackView.addSubview(stackViewSeparatorLine)
         
         profileImageView.snp.makeConstraints { make in
             make.left.top.equalTo(0).inset(Constants.contentInset)
@@ -76,9 +99,14 @@ class MyProfileRootView: UIView {
             make.width.equalTo(profileImageView.snp.height)
         }
         
-        connectionsInfoStackView.snp.makeConstraints { (make) in
+        connectionsStackView.snp.makeConstraints { (make) in
             make.centerY.equalTo(profileImageView)
             make.right.equalTo(0).inset(Constants.contentInset)
+        }
+        
+        stackViewSeparatorLine.snp.makeConstraints { make in
+            make.bottom.left.right.equalTo(0)
+            make.height.equalTo(1)
         }
         
         profileSeparatorLine.snp.makeConstraints { make in
@@ -86,15 +114,25 @@ class MyProfileRootView: UIView {
             make.height.equalTo(1)
         }
         
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(profileImageView.snp.bottom)
+            make.left.equalTo(profileImageView)
+        }
+        
+        aboutLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp.bottom)
+            make.left.equalTo(nameLabel)
+        }
+        
         addSubview(profileInfoView)
-        addSubview(searchCollectionView)
+        addSubview(photosCollectionView)
         
         profileInfoView.snp.makeConstraints { make in
             make.left.right.top.equalTo(self)
             make.height.equalTo(self).multipliedBy(0.34)
         }
         
-        searchCollectionView.snp.makeConstraints { make in
+        photosCollectionView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(self)
             make.top.equalTo(profileInfoView.snp.bottom)
         }
