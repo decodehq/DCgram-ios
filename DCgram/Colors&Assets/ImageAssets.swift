@@ -14,4 +14,5 @@ class ImageAssets {
     static let cameraTabBarITem = UIImage(named: "camera")
     static let notificationsTabBarITem = UIImage(named: "likes")
     static let myProfileTabBarITem = UIImage(named: "profile")
+    static let placeholderImage = UIImage(named: "placeholder-image")
 }
