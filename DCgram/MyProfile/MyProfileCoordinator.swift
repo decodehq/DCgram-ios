@@ -17,4 +17,10 @@ class MyProfileCoordinator: Coordinator {
         
         super.init(rootViewController: rootNavigationController)
     }
+    override func start() {
+        let vm = MyProfileRootVM()
+        let vc = MyProfileRootVC(viewModel: vm)
+        rootNC.pushViewController(vc, animated: false)
+    }
+    
 }
