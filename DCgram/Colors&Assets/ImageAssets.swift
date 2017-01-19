@@ -16,4 +16,6 @@ class ImageAssets {
     static let myProfileTabBarITem = UIImage(named: "profile")
     
     static let profilePlaceholderImage = UIImage(named: "profile-placeholder")
+    static let placeholderImage = UIImage(named: "placeholder-image")
+
 }
