@@ -21,7 +21,7 @@ class NotificationsCoordinator: Coordinator {
     override func start() {
         let vm = NotificationsRootVM()
         let vc = NotificationsRootVC(viewModel: vm)
-        rootNC.pushViewController(vc, animated: true)
+        rootNC.pushViewController(vc, animated: false)
     }
     
 }

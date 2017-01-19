@@ -28,8 +28,4 @@ class NotificationsRootVM: NotificationsRootVMProtocol {
     func selectItem(at index: Int) {
 
     }
-    
-    func updateItems() {
-        
-    }
 }

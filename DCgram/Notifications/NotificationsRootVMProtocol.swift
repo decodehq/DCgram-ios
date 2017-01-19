@@ -17,6 +17,5 @@ protocol NotificationsRootVMProtocol {
     func title(for index: Int) -> String
     func image(for index: Int) -> UIImage
     
-    func updateItems()
     func selectItem(at index: Int)
 }

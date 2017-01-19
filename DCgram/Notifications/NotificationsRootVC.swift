@@ -9,8 +9,9 @@
 import Foundation
 
 class NotificationsRootVC: UIViewController {
-    private struct Constants {
+    fileprivate struct Constants {
         static let kTextNavBarTitle = NSLocalizedString("Notifications", comment: "Title for the navigation bar on notifications view, user can see it on notifications screen")
+        static let kTableCellHeight = CGFloat(54.0)
     }
     
     var mainView: NotificationsRootView { return view as! NotificationsRootView } //swiftlint:disable:this force_cast
@@ -71,6 +72,6 @@ extension NotificationsRootVC: UITableViewDataSource {
 extension NotificationsRootVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 54
+        return Constants.kTableCellHeight
     }
 }
