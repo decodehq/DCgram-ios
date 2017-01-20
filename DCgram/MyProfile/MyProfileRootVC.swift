@@ -11,7 +11,7 @@ import UIKit
 
 class MyProfileRootVC: UIViewController {
     private struct Constants {
-        static let textNavBarTitle = NSLocalizedString("My Profile", comment: "Title for Followers text label on screen where user can see his profile data.")
+        static let textNavBarTitle = NSLocalizedString("My Profile", comment: "Title for the navigation bar on My Profile screen where user can see his profile data.")
         static let userInfoViewHeightRatio = CGFloat(0.34)
     }
     
@@ -29,6 +29,8 @@ class MyProfileRootVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = Constants.textNavBarTitle
         
         edgesForExtendedLayout = []
         

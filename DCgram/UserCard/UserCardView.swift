@@ -17,8 +17,19 @@ class UserCardView: UIView {
         static let contentInset = UIEdgeInsets(top: 15, left: 16, bottom: 16, right: 16)
     }
     
-    private(set) var followersCount: String?
-    private(set) var followedCount: String?
+    private(set) var followersCountLabel: UILabel = {
+        let label = UILabel()
+        label.tintColor = Color.titleBlackColor
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        return label
+    }()
+    
+    private(set) var followedCountLabel: UILabel = {
+        let label = UILabel()
+        label.tintColor = Color.titleBlackColor
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        return label
+    }()
     
     private(set) var followersButton: UIButton!
     private(set) var followedButton: UIButton!
@@ -26,7 +37,7 @@ class UserCardView: UIView {
     private(set) var nameLabel: UILabel!
     private(set) var aboutLabel: UILabel!
     
-    private(set) var profileImage: UIImage? = {
+    var profileImage: UIImage? = {
         let image = ImageAssets.profilePlaceholderImage
         return image
     }()
@@ -41,18 +52,22 @@ class UserCardView: UIView {
         profileImageView.contentMode = .scaleAspectFill
         
         followersButton = UIButton()
-        followersButton.titleLabel?.lineBreakMode = .byWordWrapping
-        followersButton.setTitle("\(followersCount)\n\(Constants.textFollowersLabelTitle)", for: .normal)
-        followersButton.setTitleColor(Color.titleBlackColor, for: .normal)
-        followersButton.sizeToFit()
-        
         followedButton = UIButton()
-        followedButton.titleLabel?.lineBreakMode = .byWordWrapping
-        followedButton.setTitle("\(followedCount)\n\(Constants.textFollowedLabelTitle)", for: .normal)
-        followedButton.setTitleColor(Color.titleBlackColor, for: .normal)
-        followedButton.sizeToFit()
         
-        let connectionsStackView = UIStackView(arrangedSubviews: [followersButton, followedButton])
+        let followersTitleLabel = UILabel()
+        followersTitleLabel.text = Constants.textFollowersLabelTitle
+        followersTitleLabel.font = UIFont.systemFont(ofSize: 16)
+        
+        let followedTitleLabel = UILabel()
+        followedTitleLabel.text = Constants.textFollowedLabelTitle
+        followedTitleLabel.font = UIFont.systemFont(ofSize: 16)
+        
+        let followersStackView = UIStackView(arrangedSubviews: [followersCountLabel, followersTitleLabel])
+        followersStackView.axis = .vertical
+        let followedStackView = UIStackView(arrangedSubviews: [followedCountLabel, followedTitleLabel])
+        followedStackView.axis = .vertical
+        
+        let connectionsStackView = UIStackView(arrangedSubviews: [followersStackView, followedStackView])
         connectionsStackView.axis = .horizontal
         connectionsStackView.spacing = 6
         
@@ -61,7 +76,7 @@ class UserCardView: UIView {
         
         nameLabel = UILabel()
         nameLabel.textColor = Color.titleBlackColor
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 26)
         
         aboutLabel = UILabel()
         aboutLabel.textColor = Color.titleBlackColor
@@ -75,12 +90,14 @@ class UserCardView: UIView {
         addSubview(nameLabel)
         addSubview(aboutLabel)
         addSubview(bottomSeparatorLine)
+        addSubview(followersButton)
+        addSubview(followedButton)
         
         connectionsStackView.addSubview(stackViewSeparatorLine)
         
         profileImageView.snp.makeConstraints { make in
             make.left.top.equalTo(0).inset(Constants.contentInset)
-            make.right.equalTo(connectionsStackView.snp.left)
+            make.right.lessThanOrEqualTo(connectionsStackView.snp.left)
             make.height.equalTo(profileImageView.snp.width)
         }
         
@@ -102,11 +119,20 @@ class UserCardView: UIView {
         aboutLabel.snp.makeConstraints { (make) in
             make.top.equalTo(nameLabel.snp.bottom)
             make.left.equalTo(nameLabel)
+            make.bottom.equalTo(0).inset(Constants.contentInset)
         }
         
         bottomSeparatorLine.snp.makeConstraints { make in
             make.bottom.left.right.equalTo(0)
             make.height.equalTo(1)
+        }
+        
+        followersButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(followersStackView)
+        }
+        
+        followedButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(followedStackView)
         }
     }
     

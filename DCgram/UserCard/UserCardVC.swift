@@ -27,9 +27,30 @@ class UserCardVC: UIViewController {
         
         edgesForExtendedLayout = []
         
-        mainView.nameLabel.text = "aaaasadadadadad"
-        mainView.aboutLabel.text = "asadadadadsad"
+        mainView.followersButton.addTarget(self, action: #selector(UserCardVC.followersButtonPressed), for: .touchUpInside)
+        mainView.followedButton.addTarget(self, action: #selector(UserCardVC.followedButtonPressed), for: .touchUpInside)
+        
+        bindViewModel()
     }
+    
+    private func bindViewModel() {
+        mainView.nameLabel.text = viewModel.name
+        mainView.aboutLabel.text = viewModel.about
+
+        mainView.profileImage = viewModel.profileImage
+
+        mainView.followersCountLabel.text = viewModel.followersCount
+        mainView.followedCountLabel.text = viewModel.followedCount
+    }
+    
+    @objc private func followersButtonPressed(sender: UIButton) {
+        debugPrint("followers pressed")
+    }
+    
+    @objc private func followedButtonPressed(sender: UIButton) {
+        debugPrint("followed pressed")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

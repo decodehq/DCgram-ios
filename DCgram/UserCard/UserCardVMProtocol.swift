@@ -9,5 +9,12 @@
 import Foundation
 
 protocol UserCardVMProtocol {
+    var name: String {get}
+
+    var profileImage: UIImage? {get}
+    var about: String? {get}
     
+    var followersCount: String {get}
+    var followedCount: String {get}
+
 }
