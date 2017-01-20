@@ -30,20 +30,17 @@ class NotificationsRootVC: UIViewController {
         super.viewDidLoad()
         
         edgesForExtendedLayout = []
-
         
         self.navigationItem.title = Constants.kTextNavBarTitle
         
         mainView.tableView.register(NotificationsTableViewCell.self, forCellReuseIdentifier: NotificationsTableViewCell.dc_reuseClassIdentifier)
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 // MARK: - UITableViewDataSource
@@ -63,7 +60,6 @@ extension NotificationsRootVC: UITableViewDataSource {
                 cell.titleLabel.text = title
         
         return cell
-        
     }
 }
 
