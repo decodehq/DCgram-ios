@@ -17,4 +17,11 @@ class NotificationsCoordinator: Coordinator {
         
         super.init(rootViewController: rootNavigationController)
     }
+    
+    override func start() {
+        let vm = NotificationsRootVM()
+        let vc = NotificationsRootVC(viewModel: vm)
+        rootNC.pushViewController(vc, animated: false)
+    }
+    
 }
