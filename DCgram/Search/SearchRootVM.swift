@@ -9,19 +9,13 @@
 import Foundation
 
 class SearchRootVM: SearchRootVMProtocol {
-    func getNumberOfSections() -> Int {
-        return 1
-    }
-    
-    func getNumberOfItemsInSection() -> Int {
-        return 20
-    }
-    
     func updateResults() {
         
     }
     
-    func getImage(for item: Int) -> UIImage? {
-        return ImageAssets.cameraTabBarITem
+    var galleryVM: PhotosGalleryVMProtocol
+    
+    init(galleryViewModel: PhotosGalleryVMProtocol) {
+        galleryVM = galleryViewModel
     }
 }

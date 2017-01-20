@@ -9,10 +9,7 @@
 import Foundation
 
 protocol SearchRootVMProtocol {
-    func getNumberOfSections() -> Int
-    func getNumberOfItemsInSection() -> Int
-    
     func updateResults()
     
-    func getImage(for item: Int) -> UIImage?
+    var galleryVM: PhotosGalleryVMProtocol {get}
 }

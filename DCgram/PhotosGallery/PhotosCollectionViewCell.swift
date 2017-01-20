@@ -1,5 +1,5 @@
 //
-//  SearchCollectionViewCell.swift
+//  PhotosCollectionViewCell.swift
 //  DCgram
 //
 //  Created by Toni on 17/01/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchCollectionViewCell: UICollectionViewCell {
+class PhotosCollectionViewCell: UICollectionViewCell {
     private struct Constants {
         static let contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
