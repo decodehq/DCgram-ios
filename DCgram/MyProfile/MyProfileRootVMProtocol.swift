@@ -9,8 +9,7 @@
 import Foundation
 
 protocol MyProfileRootVMProtocol {
-    func getNumberOfSections() -> Int
-    func getNumberOfItemsInSection() -> Int
-    
-    func getImage(for item: Int) -> UIImage?
+
+    var galleryVM: PhotosGalleryVMProtocol {get}
+    var infoVM: UserCardVMProtocol {get}
 }

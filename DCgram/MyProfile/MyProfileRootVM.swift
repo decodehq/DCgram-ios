@@ -9,15 +9,12 @@
 import Foundation
 
 class MyProfileRootVM: MyProfileRootVMProtocol {
-    func getNumberOfSections() -> Int {
-        return 1
-    }
+
+    var galleryVM: PhotosGalleryVMProtocol
+    var infoVM: UserCardVMProtocol
     
-    func getNumberOfItemsInSection() -> Int {
-        return 20
-    }
-    
-    func getImage(for item: Int) -> UIImage? {
-        return ImageAssets.cameraTabBarITem
+    init(galleryViewModel: PhotosGalleryVMProtocol, infoViewModel: UserCardVMProtocol) {
+        galleryVM = galleryViewModel
+        infoVM = infoViewModel
     }
 }

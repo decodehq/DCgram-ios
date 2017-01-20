@@ -1,18 +1,18 @@
 //
-//  MyProfileRootView.swift
+//  UserCardView.swift
 //  DCgram
 //
-//  Created by Toni on 18/01/2017.
+//  Created by Toni on 20/01/2017.
 //  Copyright © 2017 DECODE HQ. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class MyProfileRootView: UIView {
+class UserCardView: UIView {
     private struct Constants {
-        static let kTextFollowersLabelTitle = NSLocalizedString("Followers", comment: "Title for Followers text label on screen where user can see his profile data.")
-        static let kTextFollowedLabelTitle = NSLocalizedString("Followed", comment: "Title for Followed text label on screen where user can see his profile data.")
+        static let textFollowersLabelTitle = NSLocalizedString("Followers", comment: "Title for Followers text label on screen where user can see his profile data.")
+        static let textFollowedLabelTitle = NSLocalizedString("Followed", comment: "Title for Followed text label on screen where user can see his profile data.")
         
         static let contentInset = UIEdgeInsets(top: 15, left: 16, bottom: 16, right: 16)
     }
@@ -26,21 +26,8 @@ class MyProfileRootView: UIView {
     private(set) var nameLabel: UILabel!
     private(set) var aboutLabel: UILabel!
     
-    private(set) lazy var photosCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isScrollEnabled = true
-        collectionView.backgroundColor = .white
-        
-        return collectionView
-    }()
-    
     private(set) var profileImage: UIImage? = {
-        let image = ImageAssets.myProfileTabBarITem
+        let image = ImageAssets.profilePlaceholderImage
         return image
     }()
     
@@ -49,24 +36,19 @@ class MyProfileRootView: UIView {
         
         backgroundColor = Color.backgroundWhiteColor
         
-        let profileInfoView = UIView()
-        
-        let profileSeparatorLine = UIView()
-        profileSeparatorLine.backgroundColor = Color.backgroundGrayColor
-        
         let profileImageView = UIImageView()
         profileImageView.image = profileImage
         profileImageView.contentMode = .scaleAspectFill
         
         followersButton = UIButton()
         followersButton.titleLabel?.lineBreakMode = .byWordWrapping
-        followersButton.setTitle("\(followersCount)\n\(Constants.kTextFollowersLabelTitle)", for: .normal)
+        followersButton.setTitle("\(followersCount)\n\(Constants.textFollowersLabelTitle)", for: .normal)
         followersButton.setTitleColor(Color.titleBlackColor, for: .normal)
         followersButton.sizeToFit()
         
         followedButton = UIButton()
         followedButton.titleLabel?.lineBreakMode = .byWordWrapping
-        followedButton.setTitle("\(followedCount)\n\(Constants.kTextFollowedLabelTitle)", for: .normal)
+        followedButton.setTitle("\(followedCount)\n\(Constants.textFollowedLabelTitle)", for: .normal)
         followedButton.setTitleColor(Color.titleBlackColor, for: .normal)
         followedButton.sizeToFit()
         
@@ -85,18 +67,21 @@ class MyProfileRootView: UIView {
         aboutLabel.textColor = Color.titleBlackColor
         aboutLabel.font = UIFont.systemFont(ofSize: 12)
         
-        profileInfoView.addSubview(profileImageView)
-        profileInfoView.addSubview(profileSeparatorLine)
-        profileInfoView.addSubview(connectionsStackView)
-        profileInfoView.addSubview(nameLabel)
-        profileInfoView.addSubview(aboutLabel)
+        let bottomSeparatorLine = UIView()
+        bottomSeparatorLine.backgroundColor = Color.backgroundGrayColor
+        
+        addSubview(profileImageView)
+        addSubview(connectionsStackView)
+        addSubview(nameLabel)
+        addSubview(aboutLabel)
+        addSubview(bottomSeparatorLine)
         
         connectionsStackView.addSubview(stackViewSeparatorLine)
         
         profileImageView.snp.makeConstraints { make in
             make.left.top.equalTo(0).inset(Constants.contentInset)
-            make.height.equalTo(profileInfoView).multipliedBy(0.5)
-            make.width.equalTo(profileImageView.snp.height)
+            make.right.equalTo(connectionsStackView.snp.left)
+            make.height.equalTo(profileImageView.snp.width)
         }
         
         connectionsStackView.snp.makeConstraints { (make) in
@@ -105,11 +90,6 @@ class MyProfileRootView: UIView {
         }
         
         stackViewSeparatorLine.snp.makeConstraints { make in
-            make.bottom.left.right.equalTo(0)
-            make.height.equalTo(1)
-        }
-        
-        profileSeparatorLine.snp.makeConstraints { make in
             make.bottom.left.right.equalTo(0)
             make.height.equalTo(1)
         }
@@ -124,19 +104,10 @@ class MyProfileRootView: UIView {
             make.left.equalTo(nameLabel)
         }
         
-        addSubview(profileInfoView)
-        addSubview(photosCollectionView)
-        
-        profileInfoView.snp.makeConstraints { make in
-            make.left.right.top.equalTo(self)
-            make.height.equalTo(self).multipliedBy(0.34)
+        bottomSeparatorLine.snp.makeConstraints { make in
+            make.bottom.left.right.equalTo(0)
+            make.height.equalTo(1)
         }
-        
-        photosCollectionView.snp.makeConstraints { make in
-            make.left.right.bottom.equalTo(self)
-            make.top.equalTo(profileInfoView.snp.bottom)
-        }
-
     }
     
     required init?(coder aDecoder: NSCoder) {

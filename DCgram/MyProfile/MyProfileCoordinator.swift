@@ -17,9 +17,14 @@ class MyProfileCoordinator: Coordinator {
         
         super.init(rootViewController: rootNavigationController)
     }
+    
     override func start() {
-        let vm = MyProfileRootVM()
+        let photosGalleryVM = PhotosGalleryVM()
+        let userInfoVM = UserCardVM()
+        
+        let vm = MyProfileRootVM(galleryViewModel: photosGalleryVM, infoViewModel: userInfoVM)
         let vc = MyProfileRootVC(viewModel: vm)
+        
         rootNC.pushViewController(vc, animated: false)
     }
     
