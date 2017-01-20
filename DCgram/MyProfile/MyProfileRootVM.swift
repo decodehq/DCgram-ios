@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class MyProfileRootVM: MyProfileRootVMProtocol {
+
+    var galleryVM: PhotosGalleryVMProtocol
+    var infoVM: UserCardVMProtocol
+    
+    init(galleryViewModel: PhotosGalleryVMProtocol, infoViewModel: UserCardVMProtocol) {
+        galleryVM = galleryViewModel
+        infoVM = infoViewModel
+    }
+}

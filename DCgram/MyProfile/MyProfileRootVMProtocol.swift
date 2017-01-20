@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+protocol MyProfileRootVMProtocol {
+
+    var galleryVM: PhotosGalleryVMProtocol {get}
+    var infoVM: UserCardVMProtocol {get}
+}

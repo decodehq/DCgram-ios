@@ -12,4 +12,6 @@ class Color {
     static let tabBarUnselectedItemTintColor = UIColor.black
     
     static let backgroundWhiteColor = UIColor.white
+    static let backgroundGrayColor = UIColor.gray
+    static let titleBlackColor = UIColor.black
 }
