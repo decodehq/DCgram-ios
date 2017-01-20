@@ -10,4 +10,6 @@ import Foundation
 
 protocol SearchRootVMProtocol {
     func updateResults()
+    
+    var galleryVM: PhotosGalleryVMProtocol {get}
 }

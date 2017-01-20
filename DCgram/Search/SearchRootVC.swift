@@ -14,11 +14,15 @@ class SearchRootVC: UIViewController {
         static let kTextSearchPlaceholderTitle = NSLocalizedString("Search", comment: "Placeholder for the search text field, user can see it on search view")
     }
     
+    private var galleryVC: PhotosGalleryVC
+    
     var viewModel: SearchRootVMProtocol
     lazy var searchBar = UISearchBar(frame: CGRect.zero)
         
     init(viewModel: SearchRootVMProtocol) {
         self.viewModel = viewModel
+        self.galleryVC = PhotosGalleryVC(viewModel: viewModel.galleryVM as! PhotosGalleryVM)
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,11 +31,8 @@ class SearchRootVC: UIViewController {
         
         edgesForExtendedLayout = []
         
-        let vm = PhotosGalleryVM()
-        let vc = PhotosGalleryVC(viewModel: vm)
-        dc_attachChildVC(vc)
-        
-        vc.mainView.snp.makeConstraints { (make) in
+        dc_attachChildVC(galleryVC)
+        galleryVC.mainView.snp.makeConstraints { (make) in
             make.edges.equalTo(0)
         }
         

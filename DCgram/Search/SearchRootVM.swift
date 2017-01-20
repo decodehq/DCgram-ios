@@ -12,4 +12,10 @@ class SearchRootVM: SearchRootVMProtocol {
     func updateResults() {
         
     }
+    
+    var galleryVM: PhotosGalleryVMProtocol
+    
+    init(galleryViewModel: PhotosGalleryVMProtocol) {
+        galleryVM = galleryViewModel
+    }
 }
