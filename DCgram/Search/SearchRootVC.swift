@@ -14,20 +14,16 @@ class SearchRootVC: UIViewController {
         static let kTextSearchPlaceholderTitle = NSLocalizedString("Search", comment: "Placeholder for the search text field, user can see it on search view")
     }
     
-    var searchRootView: SearchRootView { return view as! SearchRootView } //swiftlint:disable:this force_cast
+    private var galleryVC: PhotosGalleryVC
+    
     var viewModel: SearchRootVMProtocol
-    
     lazy var searchBar = UISearchBar(frame: CGRect.zero)
-    
-    private var collectionViewHeight: CGFloat = 0
-    
+        
     init(viewModel: SearchRootVMProtocol) {
         self.viewModel = viewModel
+        self.galleryVC = PhotosGalleryVC(viewModel: viewModel.galleryVM)
+        
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    override func loadView() {
-        view = SearchRootView()
     }
     
     override func viewDidLoad() {
@@ -35,10 +31,10 @@ class SearchRootVC: UIViewController {
         
         edgesForExtendedLayout = []
         
-        searchRootView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.dc_reuseClassIdentifier)
-        
-        searchRootView.searchCollectionView.dataSource = self
-        searchRootView.searchCollectionView.delegate = self
+        dc_attachChildVC(galleryVC)
+        galleryVC.mainView.snp.makeConstraints { (make) in
+            make.edges.equalTo(0)
+        }
         
         searchBar.placeholder = Constants.kTextSearchPlaceholderTitle
         searchBar.delegate = self
@@ -49,35 +45,6 @@ class SearchRootVC: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension SearchRootVC: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.getNumberOfSections()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getNumberOfItemsInSection()
-    }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.dc_reuseClassIdentifier, for: indexPath) as! SearchCollectionViewCell // swiftlint:disable:this force_cast
-        
-        cell.imageView.image = viewModel.getImage(for: indexPath.item)
-        
-        return cell
-    }
-}
-
-extension SearchRootVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = CGFloat(collectionView.bounds.size.width/3)
-        
-        return CGSize(width: itemWidth, height: itemWidth)
     }
 }
 

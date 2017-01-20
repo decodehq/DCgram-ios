@@ -1,19 +1,17 @@
 //
-//  SearchRootView.swift
+//  PhotosGalleryView.swift
 //  DCgram
 //
-//  Created by Toni on 17/01/2017.
+//  Created by Toni on 19/01/2017.
 //  Copyright © 2017 DECODE HQ. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SearchRootView: UIView {
+class PhotosGalleryView: UIView {
     
-    private var collectionViewHeight: CGFloat = 0
-    
-    private(set) lazy var searchCollectionView: UICollectionView = {
+    private(set) lazy var photosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
         layout.minimumLineSpacing = 0
@@ -28,12 +26,10 @@ class SearchRootView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+                
+        addSubview(photosCollectionView)
         
-        backgroundColor = Color.backgroundWhiteColor
-        
-        addSubview(searchCollectionView)
-        
-        searchCollectionView.snp.makeConstraints { make in
+        photosCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
     }
