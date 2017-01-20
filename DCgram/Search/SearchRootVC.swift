@@ -11,7 +11,7 @@ import UIKit
 
 class SearchRootVC: UIViewController {
     private struct Constants {
-        static let kTextSearchPlaceholderTitle = NSLocalizedString("Search", comment: "Placeholder for the search text field, user can see it on search view")
+        static let textSearchPlaceholderTitle = NSLocalizedString("Search", comment: "Placeholder for the search text field, user can see it on search view")
     }
     
     private var galleryVC: PhotosGalleryVC
@@ -36,7 +36,7 @@ class SearchRootVC: UIViewController {
             make.edges.equalTo(0)
         }
         
-        searchBar.placeholder = Constants.kTextSearchPlaceholderTitle
+        searchBar.placeholder = Constants.textSearchPlaceholderTitle
         searchBar.delegate = self
         
         navigationItem.titleView = searchBar

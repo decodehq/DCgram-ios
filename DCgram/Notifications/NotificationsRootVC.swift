@@ -10,8 +10,8 @@ import Foundation
 
 class NotificationsRootVC: UIViewController {
     fileprivate struct Constants {
-        static let kTextNavBarTitle = NSLocalizedString("Notifications", comment: "Title for the navigation bar on notifications view, user can see it on notifications screen")
-        static let kTableCellHeight = CGFloat(54.0)
+        static let textNavBarTitle = NSLocalizedString("Notifications", comment: "Title for the navigation bar on notifications view, user can see it on notifications screen")
+        static let tableCellHeight = CGFloat(54.0)
     }
     
     var mainView: NotificationsRootView { return view as! NotificationsRootView } //swiftlint:disable:this force_cast
@@ -31,7 +31,7 @@ class NotificationsRootVC: UIViewController {
         
         edgesForExtendedLayout = []
         
-        self.navigationItem.title = Constants.kTextNavBarTitle
+        self.navigationItem.title = Constants.textNavBarTitle
         
         mainView.tableView.register(NotificationsTableViewCell.self, forCellReuseIdentifier: NotificationsTableViewCell.dc_reuseClassIdentifier)
         mainView.tableView.dataSource = self
@@ -68,6 +68,6 @@ extension NotificationsRootVC: UITableViewDataSource {
 extension NotificationsRootVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.kTableCellHeight
+        return Constants.tableCellHeight
     }
 }
