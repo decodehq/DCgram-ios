@@ -19,8 +19,9 @@ class SearchCoordinator: Coordinator {
     }
     
     override func start() {
-        let vm = SearchRootVM()
+        let photosGalleryVM = PhotosGalleryVM()
+        let vm = SearchRootVM(galleryViewModel: photosGalleryVM)
         let vc = SearchRootVC(viewModel: vm)
-        rootNC.pushViewController(vc, animated: true)
+        rootNC.pushViewController(vc, animated: false)
     }
 }
