@@ -21,7 +21,7 @@ class SearchRootVC: UIViewController {
         
     init(viewModel: SearchRootVMProtocol) {
         self.viewModel = viewModel
-        self.galleryVC = PhotosGalleryVC(viewModel: viewModel.galleryVM as! PhotosGalleryVM)
+        self.galleryVC = PhotosGalleryVC(viewModel: viewModel.galleryVM)
         
         super.init(nibName: nil, bundle: nil)
     }
