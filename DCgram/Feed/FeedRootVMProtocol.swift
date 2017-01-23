@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+protocol FeedRootVMProtocol {
+    
+    var numberOfItems: Int { get }
+    func title(for index: Int) -> String
+    func image(for index: Int) -> UIImage
+}

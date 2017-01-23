@@ -17,4 +17,10 @@ class FeedCoordinator: Coordinator {
         
         super.init(rootViewController: rootNavigationController)
     }
+    
+    override func start() {
+        let vm = FeedRootVM()
+        let vc = FeedRootVC(viewModel: vm)
+        rootNC.pushViewController(vc, animated: false)
+    }
 }

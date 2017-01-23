@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class FeedRootVM: FeedRootVMProtocol {
+    
+    var numberOfItems: Int {
+        return 40
+    }
+    func title(for index: Int) -> String {
+        return "Asasas"
+    }
+    
+    func image(for index: Int) -> UIImage {
+        return ImageAssets.profilePlaceholderImage!
+    }
+}
