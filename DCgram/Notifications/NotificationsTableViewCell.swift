@@ -21,6 +21,7 @@ class NotificationsTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 2
+        titleLabel.textAlignment = .left
         return titleLabel
     }()
     
@@ -31,13 +32,14 @@ class NotificationsTableViewCell: UITableViewCell {
         addSubview(titleLabel)
         
         profileImageView.snp.makeConstraints { make in
-            make.left.equalTo(self).offset(-6)
+            make.left.equalTo(self).offset(8)
             make.centerY.equalTo(self)
             make.height.equalTo(42)
+            make.width.equalTo(profileImageView.snp.height)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(profileImageView.snp.right)
+            make.left.equalTo(profileImageView.snp.right).offset(8)
             make.centerY.equalTo(profileImageView)
             make.right.equalTo(self).inset(6)
         }
