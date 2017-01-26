@@ -75,13 +75,9 @@ extension FeedRootVC: UITableViewDataSource {
         
         cell.giveLikeButton.addTarget(self, action: #selector(FeedRootVC.giveLike), for: .touchUpInside)
         
-        cell.descriptionTextView.originalText = comment
-        
-        cell.descriptionTextView.shorten()
-        cell.descriptionTextView.sizeToFit()
-        
+        cell.descriptionTextView.text = comment
         cell.descriptionTextView.delegate = self
-
+        
         return cell
     }
 }
@@ -99,14 +95,9 @@ extension FeedRootVC: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if let expandableTextView = textView as? ExpandableTextView {
-            if URL.absoluteString == "expand"{
-                expandableTextView.expand()
-                
-                UIView.setAnimationsEnabled(false)
-                mainView.tableView.beginUpdates()
-                mainView.tableView.endUpdates()
-                UIView.setAnimationsEnabled(true)
-                
+            if URL.absoluteString == expandableTextView.trimmingElement.URLIdentificator {
+                expandableTextView.collapsed = false
+                mainView.resizeRows(animated: false)
                 return true
             }
         }

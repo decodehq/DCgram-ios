@@ -67,9 +67,7 @@ class FeedTableViewCell: UITableViewCell {
     }()
     
     let descriptionTextView: ExpandableTextView = {
-        var textView = ExpandableTextView()
-        textView.isEditable = false
-        textView.isScrollEnabled = false
+        var textView = ExpandableTextView(trimmingElement: TrimmingElement() , collapsedLength: 140)
         return textView
     }()
     
@@ -168,5 +166,12 @@ class FeedTableViewCell: UITableViewCell {
 //
 //        photoDescriptionLabel.attributedTruncationToken = truncatingToken
 //        photoDescriptionLabel.numberOfLines = 3
+        
+        
+            descriptionTextView.collapsed = true
+            descriptionTextView.text = ""
+
+
+        
     }
 }

@@ -31,4 +31,11 @@ class FeedRootView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func resizeRows(animated: Bool) {
+        UIView.setAnimationsEnabled(animated)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(animated)
+    }
 }

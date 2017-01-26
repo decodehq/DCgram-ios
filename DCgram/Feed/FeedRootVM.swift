@@ -11,7 +11,7 @@ import Foundation
 class FeedRootVM: FeedRootVMProtocol {
     
     var numberOfItems: Int {
-        return 40
+        return 12
     }
     
     func image(for index: Int) -> UIImage {
@@ -31,10 +31,10 @@ class FeedRootVM: FeedRootVMProtocol {
     }
     
     func numberOfLikes(for index: Int) -> Int {
-        return 300
+        return 30
     }
     
     func numberOfComments(for index: Int) -> Int {
-        return 500
+        return 566
     }
 }

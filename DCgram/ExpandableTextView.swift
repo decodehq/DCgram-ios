@@ -8,56 +8,76 @@
 
 import Foundation
 
+struct TrimmingElement {
+    var trimmingText = "...more"
+    let URLIdentificator = "expand"
+}
+
 class ExpandableTextView: UITextView {
     
-    let trimmingLink: NSAttributedString = {
-        let attributedString = NSMutableAttributedString(string: "...more", attributes: [:])
-        attributedString.addAttribute(NSLinkAttributeName, value: "expand", range: NSRange(location: 0, length: attributedString.length))
+    var trimmingElement: TrimmingElement
+    
+    override open var text: String! {
+        get {
+            return originalText
+        }
+        set{
+            originalText = newValue
+            shorten()
+            sizeToFit()
+        }
+    }
+    
+    var collapsed: Bool = true {
+        didSet {
+            if collapsed {
+                shorten()
+            } else {
+                expand()
+            }
+        }
+    }
+    
+    init(trimmingElement: TrimmingElement, collapsedLength: Int) {
+        
+        self.trimmingElement = trimmingElement
+        self.collapsedLength = collapsedLength
+        
+        super.init(frame: CGRect.zero, textContainer: nil)
+        
+        isEditable = false
+        isScrollEnabled = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+ //MARK: - Private
+
+    private var originalText: String = ""
+    private var collapsedLength: Int
+    
+    private lazy var trimmingLink: NSAttributedString = {
+        let attributedString = NSMutableAttributedString(string: self.trimmingElement.trimmingText, attributes: [:])
+        attributedString.addAttribute(NSLinkAttributeName, value: self.trimmingElement.URLIdentificator, range: NSRange(location: 0, length: attributedString.length))
         
         return attributedString
     }()
     
-    let collapsed: Bool = true
-    
-    var originalText: String!
-    
-    private var shortenedText: String!
-    
-//    override open var text: String! {
-//        didSet {
-//            attributedTextDidChange()
-//        }
-//    }
-//    
-//    override open var attributedText: NSAttributedString! {
-//        didSet {
-//            attributedTextDidChange()
-//            attributedText =
-//        }
-//    }
-    
-    func shorten() {
-        if originalText.characters.count >= 200 && collapsed {
+    private func shorten() {
+        if originalText.characters.count >= collapsedLength && collapsed {
+            let index = originalText.index(originalText.startIndex, offsetBy: collapsedLength)
+            let shortenedText = originalText.substring(to: index)
+            let newText = NSMutableAttributedString(string: shortenedText + trimmingLink.string)
+            newText.addAttribute(NSLinkAttributeName, value: trimmingElement.URLIdentificator, range: NSRange(location: shortenedText.characters.count, length: trimmingLink.length))
             
-            let index = originalText.index(originalText.startIndex, offsetBy: 200)
-            
-            shortenedText = originalText.substring(to: index)
-            
-            let attributedText2 = NSMutableAttributedString(string: shortenedText + trimmingLink.string)
-            attributedText2.addAttribute(NSLinkAttributeName, value: "expand", range: NSRange(location: shortenedText.characters.count, length: trimmingLink.length))
-            
-            attributedText = attributedText2
-            
+            attributedText = newText
         }
     }
     
-    func expand() {
+    private func expand() {
         attributedText = NSAttributedString(string: originalText)
-        
         sizeToFit()
-        
-        
-//        frame = CGRect(origin: frame.origin, size: contentSize)
-    
     }
 }
