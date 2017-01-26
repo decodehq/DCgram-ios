@@ -12,6 +12,8 @@ class FeedRootView: UIView {
     
     private(set) var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.estimatedRowHeight = 400.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         return tableView
     }()
     

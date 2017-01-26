@@ -44,6 +44,10 @@ class FeedRootVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func giveLike() {
+        debugPrint("like")
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -56,18 +60,28 @@ extension FeedRootVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.dc_reuseClassIdentifier, for: indexPath) as! FeedTableViewCell //swiftlint:disable:this force_cast
         
-        let title = viewModel.title(for: indexPath.row)
+        let username = viewModel.username(for: indexPath.row)
+        let userImage = viewModel.userImage(for: indexPath.row)
         let image = viewModel.image(for: indexPath.row)
-        let numberOfLikes = "43"//viewModel.image(for: indexPath.row)
-        let numberOfComments = "678" //viewModel.image(for: indexPath.row)
+        let numberOfLikes = viewModel.numberOfLikes(for: indexPath.row)
+        let numberOfComments = viewModel.numberOfComments(for: indexPath.row)
+        let comment = viewModel.photoComment(for: indexPath.row)
         
-        cell.profileImageView.image = image
-//        cell.feedImageView.image = image
-        cell.usernameLabel.text = title
+        cell.profileImageView.image = userImage
+        cell.feedImageView.image = image
+        cell.usernameLabel.text = username
         cell.likesCountButton.setTitle("\(numberOfLikes) \(Constants.textLikesButtonTitle)", for: .normal)
         cell.commentsCountButton.setTitle("\(numberOfComments) \(Constants.textCommentsButtonTitle)", for: .normal)
-        cell.photoDescriptionTextView.text = "Neki analitičari smatraju kako su ciljevi Vladimira Putina, ruskog predsjednika, racionalni i obrambeni: širenje NATO-a postaje prijetnja i Rusija uzvraća udarac. Zapad širi svoj utjecaj na račun Rusije i ona se osvećuje. No, Miller smatra kako su to - gluposti. "
         
+        cell.giveLikeButton.addTarget(self, action: #selector(FeedRootVC.giveLike), for: .touchUpInside)
+        
+        cell.descriptionTextView.originalText = comment
+        
+        cell.descriptionTextView.shorten()
+        cell.descriptionTextView.sizeToFit()
+        
+        cell.descriptionTextView.delegate = self
+
         return cell
     }
 }
@@ -76,7 +90,26 @@ extension FeedRootVC: UITableViewDataSource {
 
 extension FeedRootVC: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.tableCellHeight
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return Constants.tableCellHeight - 100
+//    }
+}
+
+extension FeedRootVC: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if let expandableTextView = textView as? ExpandableTextView {
+            if URL.absoluteString == "expand"{
+                expandableTextView.expand()
+                
+                UIView.setAnimationsEnabled(false)
+                mainView.tableView.beginUpdates()
+                mainView.tableView.endUpdates()
+                UIView.setAnimationsEnabled(true)
+                
+                return true
+            }
+        }
+        return false
     }
 }

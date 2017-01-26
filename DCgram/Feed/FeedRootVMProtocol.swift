@@ -11,6 +11,12 @@ import Foundation
 protocol FeedRootVMProtocol {
     
     var numberOfItems: Int { get }
-    func title(for index: Int) -> String
+    
     func image(for index: Int) -> UIImage
+    
+    func username(for index: Int) -> String
+    func userImage(for index: Int) -> UIImage
+    func photoComment(for index: Int) -> String
+    func numberOfLikes(for index: Int) -> Int
+    func numberOfComments(for index: Int) -> Int
 }
