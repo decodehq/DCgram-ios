@@ -56,18 +56,18 @@ class FeedTableViewCell: UITableViewCell {
     
     let giveCommentButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageAssets.notificationsTabBarITem, for: .normal)
+        button.setImage(ImageAssets.homeTabBarITem, for: .normal)
         return button
     }()
     
     let giveLikeButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageAssets.homeTabBarITem, for: .normal)
+        button.setImage(ImageAssets.notificationsTabBarITem, for: .normal)
         return button
     }()
     
     let descriptionTextView: ExpandableTextView = {
-        var textView = ExpandableTextView(trimmingElement: TrimmingElement() , collapsedLength: 140)
+        var textView = ExpandableTextView(collapsedLength: 180, trimmingElement: TrimmingElement(trimmingText: NSMutableAttributedString(string: "...more", attributes: [NSForegroundColorAttributeName : UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])))
         return textView
     }()
     
@@ -82,7 +82,7 @@ class FeedTableViewCell: UITableViewCell {
         marksContainerView.addSubview(likesCountButton)
         marksContainerView.addSubview(commentsCountButton)
         marksContainerView.addSubview(spacerLabel)
-       
+        
         likesCountButton.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(0)
         }
@@ -91,7 +91,7 @@ class FeedTableViewCell: UITableViewCell {
             make.top.bottom.equalTo(0)
             make.left.equalTo(likesCountButton.snp.right)
         }
-    
+        
         commentsCountButton.snp.makeConstraints { (make) in
             make.right.top.bottom.equalTo(0)
             make.left.equalTo(spacerLabel.snp.right)
@@ -110,39 +110,35 @@ class FeedTableViewCell: UITableViewCell {
         contentView.addSubview(descriptionTextView)
         
         profileImageView.snp.makeConstraints { make in
-            make.left.top.equalTo(self.contentView).inset(Constants.contentInset)//.priorityRequired()
-            make.height.width.equalTo(42)//.priorityRequired()
+            make.left.top.equalTo(self.contentView).inset(Constants.contentInset)
+            make.height.width.equalTo(42)
         }
         
         usernameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(profileImageView.snp.right).offset(8)
             make.centerY.equalTo(profileImageView)
-//            make.right.equalTo(self).inset(Constants.contentInset)
         }
         
         feedImageView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.contentView).inset(Constants.contentInset)
             make.top.equalTo(profileImageView.snp.bottom).offset(8)
-//            make.height.greaterThanOrEqualTo(200)
         }
         
         giveStackView.snp.makeConstraints { (make) in
             make.left.equalTo(feedImageView)
             make.top.equalTo(feedImageView.snp.bottom).offset(8)
             make.right.lessThanOrEqualTo(marksContainerView.snp.left).offset(-20)
-//            make.height.greaterThanOrEqualTo(40)
         }
         
         marksContainerView.snp.makeConstraints { (make) in
             make.right.equalTo(feedImageView)
             make.centerY.equalTo(giveStackView)
         }
-
+        
         descriptionTextView.snp.makeConstraints { (make) in
             make.left.right.equalTo(0).inset(Constants.contentInset)
             make.top.equalTo(giveStackView.snp.bottom)
             make.bottom.equalTo(0).inset(Constants.contentInset)
-            make.height.greaterThanOrEqualTo(5)
         }
     }
     
@@ -153,25 +149,16 @@ class FeedTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-//        profileImageView.image = ImageAssets.profilePlaceholderImage
-//        usernameLabel.text = ""
-//        feedImageView.image = nil
-//
-//        photoDescriptionLabel.text = nil
-//        photoDescriptionLabel.linkAttributes = nil
-//        photoDescriptionLabel.attributedText = nil
-//        photoDescriptionLabel.attributedTruncationToken = nil
-//
-//        let truncatingToken = NSAttributedString(string: "...more", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 22), NSForegroundColorAttributeName : UIColor.gray, NSLinkAttributeName : NSURL(string:"...more")!])
-//
-//        photoDescriptionLabel.attributedTruncationToken = truncatingToken
-//        photoDescriptionLabel.numberOfLines = 3
+        //        profileImageView.image = ImageAssets.profilePlaceholderImage
+        //        usernameLabel.text = ""
+        //        feedImageView.image = nil
+        //
+        //        photoDescriptionLabel.text = nil
+        //        photoDescriptionLabel.linkAttributes = nil
+        //        photoDescriptionLabel.attributedText = nil
+        //        photoDescriptionLabel.attributedTruncationToken = nil
         
-        
-            descriptionTextView.collapsed = true
-            descriptionTextView.text = ""
+        descriptionTextView.collapsed = true
 
-
-        
     }
 }

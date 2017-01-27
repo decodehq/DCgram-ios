@@ -75,8 +75,9 @@ extension FeedRootVC: UITableViewDataSource {
         
         cell.giveLikeButton.addTarget(self, action: #selector(FeedRootVC.giveLike), for: .touchUpInside)
         
-        cell.descriptionTextView.text = comment
         cell.descriptionTextView.delegate = self
+        
+        cell.descriptionTextView.setExpandable(attributedText: NSAttributedString(string: comment, attributes: [NSForegroundColorAttributeName : UIColor.brown, NSFontAttributeName : UIFont.systemFont(ofSize: UIFont.systemFontSize) ]))
         
         return cell
     }
