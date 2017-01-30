@@ -159,6 +159,8 @@ class FeedTableViewCell: UITableViewCell {
         //        photoDescriptionLabel.attributedTruncationToken = nil
         
         descriptionTextView.collapsed = true
+        
+        descriptionTextView.attributedText = nil
 
     }
 }

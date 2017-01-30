@@ -77,7 +77,7 @@ extension FeedRootVC: UITableViewDataSource {
         
         cell.descriptionTextView.delegate = self
         
-        cell.descriptionTextView.setExpandable(attributedText: NSAttributedString(string: comment, attributes: [NSForegroundColorAttributeName : UIColor.brown, NSFontAttributeName : UIFont.systemFont(ofSize: UIFont.systemFontSize) ]))
+        cell.descriptionTextView.setExpandable(attributedText: NSAttributedString(string: comment))
         
         return cell
     }
@@ -99,6 +99,15 @@ extension FeedRootVC: UITextViewDelegate {
             if URL.absoluteString == expandableTextView.trimmingElement.URLIdentificator {
                 expandableTextView.collapsed = false
                 mainView.resizeRows(animated: false)
+                return true
+            } else if URL.absoluteString.contains("@") {
+                debugPrint("username link: \(URL.absoluteString)")
+                return true
+            } else if URL.absoluteString.contains("#") {
+                debugPrint("hashtag link: \(URL.absoluteString)")
+                return true
+            } else if URL.absoluteString.contains("http") {
+                debugPrint("website link: \(URL.absoluteString)")
                 return true
             }
         }

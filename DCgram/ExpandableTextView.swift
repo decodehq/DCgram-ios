@@ -35,7 +35,11 @@ class ExpandableTextView: UITextView {
         
         isEditable = false
         isScrollEnabled = false
+        
         linkTextAttributes = [:]
+//        linkTextAttributes = [NSForegroundColorAttributeName : UIColor.red]
+        
+        dataDetectorTypes = .link
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,18 +47,18 @@ class ExpandableTextView: UITextView {
     }
     
     func setExpandable(text: String) {
-        originalAttributedText = NSAttributedString(string: text) //, attributes: [String : Any]?)
+        originalAttributedText = addLinks(to: NSAttributedString(string: text))
         shorten(this: originalAttributedText)
     }
     
     func setExpandable(attributedText: NSAttributedString) {
-        originalAttributedText = attributedText
+        originalAttributedText = addLinks(to: attributedText)
         shorten(this: originalAttributedText)
     }
     
  //MARK: - Private
     
-    private var originalAttributedText = NSAttributedString(string: "")
+    private var originalAttributedText: NSAttributedString!
     private var collapsedLength: Int
     
     private lazy var trimmingLink: NSAttributedString = {
@@ -67,12 +71,12 @@ class ExpandableTextView: UITextView {
     
     private func shorten(this text: NSAttributedString) {
         if text.length >= collapsedLength && collapsed {
-            let newText = NSMutableAttributedString()
+            let shortText = NSMutableAttributedString()
                 
-            newText.append(text.attributedSubstring(from: NSRange(location: 0, length: collapsedLength )))
-            newText.append(trimmingLink)
+            shortText.append(text.attributedSubstring(from: NSRange(location: 0, length: collapsedLength )))
+            shortText.append(trimmingLink)
             
-            attributedText = newText
+            attributedText = shortText
         } else {
             attributedText = text
         }
@@ -80,25 +84,33 @@ class ExpandableTextView: UITextView {
     }
     
     private func expand() {
-//        attributedText = appropriateStyle(for: originalAttributedText)
-        
         attributedText =  originalAttributedText
-
         sizeToFit()
     }
     
-//    private func appropriateStyle(for text: NSAttributedString) -> NSMutableAttributedString {
-//        
-//        let newText = NSMutableAttributedString()
-//        newText.append(text)
-//        
-//        if let defaultFont = font {
-//            newText.addAttribute(NSFontAttributeName, value: defaultFont, range: NSRange(location: 0, length: text.length))
-//        }
-//        
-//        if let defaultColor = textColor {
-//            newText.addAttribute(NSForegroundColorAttributeName, value: defaultColor, range: NSRange(location: 0, length: text.length))
-//        }
-//        return newText
-//    }
+    private func addLinks(to text: NSAttributedString) -> NSAttributedString {
+        
+        let textWithLinks = NSMutableAttributedString()
+        textWithLinks.append(text)
+        
+        let range = NSMakeRange(0, textWithLinks.length)
+        
+        let regexForUsername = try? NSRegularExpression(pattern: "@([\\w]+)", options: [])
+        let regexForHashtag = try? NSRegularExpression(pattern: "#([\\w]+)", options: [])
+        
+        let matchesForUsername = (regexForUsername?.matches(in: textWithLinks.string, options: [], range: range))!
+        let matchesForHashtag = (regexForHashtag?.matches(in: textWithLinks.string, options: [], range: range))!
+        
+        for match in matchesForUsername {
+            textWithLinks.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 14), range: match.rangeAt(0))
+            textWithLinks.addAttribute(NSLinkAttributeName, value: textWithLinks.attributedSubstring(from: match.rangeAt(0)).string, range: match.rangeAt(0))
+        }
+        
+        for match in matchesForHashtag {
+            textWithLinks.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 14), range: match.rangeAt(0))
+            textWithLinks.addAttribute(NSLinkAttributeName, value: textWithLinks.attributedSubstring(from: match.rangeAt(0)).string, range: match.rangeAt(0))
+        }
+        
+        return textWithLinks
+    }
 }
