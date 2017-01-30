@@ -38,15 +38,39 @@ class FeedRootVC: UIViewController {
         
         mainView.tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: FeedTableViewCell.dc_reuseClassIdentifier)
         mainView.tableView.dataSource = self
-        mainView.tableView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func giveLike() {
-        debugPrint("like")
+    @objc private func giveLike() {
+        debugPrint("liked")
+    }
+    
+    @objc private func giveComment() {
+        debugPrint("commented")
+    }
+    
+    @objc private func onCommentsCountPressed() {
+        debugPrint("comment count pressed")
+    }
+    
+    @objc private func onLikesCountPressed() {
+        debugPrint("like count pressed")
+    }
+    
+    @objc private func onUsernamePressed() {
+        debugPrint("username pressed")
+    }
+    
+    fileprivate func bindVC(to cell: FeedTableViewCell) {
+        cell.descriptionTextView.delegate = self
+        cell.giveLikeButton.addTarget(self, action: #selector(FeedRootVC.giveLike), for: .touchUpInside)
+        cell.giveCommentButton.addTarget(self, action: #selector(FeedRootVC.giveComment), for: .touchUpInside)
+        cell.likesCountButton.addTarget(self, action: #selector(FeedRootVC.onLikesCountPressed), for: .touchUpInside)
+        cell.commentsCountButton.addTarget(self, action: #selector(FeedRootVC.onCommentsCountPressed), for: .touchUpInside)
+        cell.usernameButton.addTarget(self, action: #selector(FeedRootVC.onUsernamePressed), for: .touchUpInside)
     }
 }
 
@@ -69,28 +93,18 @@ extension FeedRootVC: UITableViewDataSource {
         
         cell.profileImageView.image = userImage
         cell.feedImageView.image = image
-        cell.usernameLabel.text = username
+        cell.usernameButton.setTitle(username, for: .normal)
         cell.likesCountButton.setTitle("\(numberOfLikes) \(Constants.textLikesButtonTitle)", for: .normal)
         cell.commentsCountButton.setTitle("\(numberOfComments) \(Constants.textCommentsButtonTitle)", for: .normal)
-        
-        cell.giveLikeButton.addTarget(self, action: #selector(FeedRootVC.giveLike), for: .touchUpInside)
-        
-        cell.descriptionTextView.delegate = self
-        
         cell.descriptionTextView.setExpandable(attributedText: NSAttributedString(string: comment))
+        
+        bindVC(to: cell)
         
         return cell
     }
 }
 
-// MARK: - UITableViewDelegate
-
-extension FeedRootVC: UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return Constants.tableCellHeight - 100
-//    }
-}
+// MARK: - UITextViewDelegate
 
 extension FeedRootVC: UITextViewDelegate {
     

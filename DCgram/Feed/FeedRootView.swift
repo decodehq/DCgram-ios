@@ -21,6 +21,7 @@ class FeedRootView: UIView {
         super.init(frame: frame)
         
         backgroundColor = Color.backgroundWhiteColor
+        tableView.allowsSelection = false
         addSubview(tableView)
         
         tableView.snp.makeConstraints { make in

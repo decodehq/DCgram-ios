@@ -22,12 +22,10 @@ class FeedTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    let usernameLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.numberOfLines = 2
-        titleLabel.textAlignment = .left
-        return titleLabel
+    let usernameButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        return button
     }()
     
     let feedImageView: UIImageView = {
@@ -103,7 +101,7 @@ class FeedTableViewCell: UITableViewCell {
         giveStackView.spacing = 8
         
         contentView.addSubview(profileImageView)
-        contentView.addSubview(usernameLabel)
+        contentView.addSubview(usernameButton)
         contentView.addSubview(feedImageView)
         contentView.addSubview(marksContainerView)
         contentView.addSubview(giveStackView)
@@ -114,7 +112,7 @@ class FeedTableViewCell: UITableViewCell {
             make.height.width.equalTo(42)
         }
         
-        usernameLabel.snp.makeConstraints { (make) in
+        usernameButton.snp.makeConstraints { (make) in
             make.left.equalTo(profileImageView.snp.right).offset(8)
             make.centerY.equalTo(profileImageView)
         }
