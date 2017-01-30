@@ -1,0 +1,164 @@
+//
+//  FeedTableViewCell.swift
+//  DCgram
+//
+//  Created by Toni on 23/01/2017.
+//  Copyright © 2017 DECODE HQ. All rights reserved.
+//
+
+import UIKit
+
+class FeedTableViewCell: UITableViewCell {
+    
+    private struct Constants {
+        static let contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageAssets.profilePlaceholderImage
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    
+    let usernameButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    
+    let feedImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageAssets.placeholderImage
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    
+    let commentsCountButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(Color.tabBarUnselectedItemTintColor, for: .normal)
+        button.titleLabel!.font =  UIFont.boldSystemFont(ofSize: 14)
+        button.sizeToFit()
+        return button
+    }()
+    
+    let likesCountButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(Color.tabBarUnselectedItemTintColor, for: .normal)
+        button.titleLabel!.font =  UIFont.boldSystemFont(ofSize: 14)
+        button.sizeToFit()
+        return button
+    }()
+    
+    let giveCommentButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageAssets.homeTabBarITem, for: .normal)
+        return button
+    }()
+    
+    let giveLikeButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageAssets.notificationsTabBarITem, for: .normal)
+        return button
+    }()
+    
+    let descriptionTextView: ExpandableTextView = {
+        var textView = ExpandableTextView(collapsedLength: 180, trimmingElement: TrimmingElement(trimmingText: NSMutableAttributedString(string: "...more", attributes: [NSForegroundColorAttributeName : UIColor.black, NSFontAttributeName : UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])))
+        return textView
+    }()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        let spacerLabel = UILabel()
+        spacerLabel.text = " - "
+        spacerLabel.font =  UIFont.boldSystemFont(ofSize: 14)
+        
+        let marksContainerView = UIView()
+        marksContainerView.addSubview(likesCountButton)
+        marksContainerView.addSubview(commentsCountButton)
+        marksContainerView.addSubview(spacerLabel)
+        
+        likesCountButton.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalTo(0)
+        }
+        
+        spacerLabel.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(0)
+            make.left.equalTo(likesCountButton.snp.right)
+        }
+        
+        commentsCountButton.snp.makeConstraints { (make) in
+            make.right.top.bottom.equalTo(0)
+            make.left.equalTo(spacerLabel.snp.right)
+        }
+        
+        let giveStackView = UIStackView(arrangedSubviews: [giveLikeButton, giveCommentButton])
+        giveStackView.axis = .horizontal
+        giveStackView.distribution = .fillEqually
+        giveStackView.spacing = 8
+        
+        contentView.addSubview(profileImageView)
+        contentView.addSubview(usernameButton)
+        contentView.addSubview(feedImageView)
+        contentView.addSubview(marksContainerView)
+        contentView.addSubview(giveStackView)
+        contentView.addSubview(descriptionTextView)
+        
+        profileImageView.snp.makeConstraints { make in
+            make.left.top.equalTo(self.contentView).inset(Constants.contentInset)
+            make.height.width.equalTo(42)
+        }
+        
+        usernameButton.snp.makeConstraints { (make) in
+            make.left.equalTo(profileImageView.snp.right).offset(8)
+            make.centerY.equalTo(profileImageView)
+        }
+        
+        feedImageView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(self.contentView).inset(Constants.contentInset)
+            make.top.equalTo(profileImageView.snp.bottom).offset(8)
+        }
+        
+        giveStackView.snp.makeConstraints { (make) in
+            make.left.equalTo(feedImageView)
+            make.top.equalTo(feedImageView.snp.bottom).offset(8)
+            make.right.lessThanOrEqualTo(marksContainerView.snp.left).offset(-20)
+        }
+        
+        marksContainerView.snp.makeConstraints { (make) in
+            make.right.equalTo(feedImageView)
+            make.centerY.equalTo(giveStackView)
+        }
+        
+        descriptionTextView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(0).inset(Constants.contentInset)
+            make.top.equalTo(giveStackView.snp.bottom)
+            make.bottom.equalTo(0).inset(Constants.contentInset)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder: not implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        //        profileImageView.image = ImageAssets.profilePlaceholderImage
+        //        usernameLabel.text = ""
+        //        feedImageView.image = nil
+        //
+        //        photoDescriptionLabel.text = nil
+        //        photoDescriptionLabel.linkAttributes = nil
+        //        photoDescriptionLabel.attributedText = nil
+        //        photoDescriptionLabel.attributedTruncationToken = nil
+        
+        descriptionTextView.collapsed = true
+        
+        descriptionTextView.attributedText = nil
+
+    }
+}

@@ -45,14 +45,17 @@
 		7D86CEFE1DE5CD930089CB20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D86CEFD1DE5CD930089CB20 /* AppDelegate.swift */; };
 		7D86CF051DE5CD930089CB20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF041DE5CD930089CB20 /* Assets.xcassets */; };
 		7D86CF081DE5CD930089CB20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D86CF061DE5CD930089CB20 /* LaunchScreen.storyboard */; };
-		B9B77C631E2FA279006775FA /* NotificationsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C621E2FA279006775FA /* NotificationsRootView.swift */; };
-		B9B77C651E2FAC46006775FA /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */; };
 		B97629761E3111F7000E2174 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97629751E3111F7000E2174 /* PhotosCollectionViewCell.swift */; };
 		B97629781E311254000E2174 /* PhotosGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97629771E311254000E2174 /* PhotosGalleryVC.swift */; };
 		B976297A1E311299000E2174 /* PhotosGalleryVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97629791E311299000E2174 /* PhotosGalleryVMProtocol.swift */; };
 		B976297C1E3112A7000E2174 /* PhotosGalleryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976297B1E3112A7000E2174 /* PhotosGalleryVM.swift */; };
 		B976297E1E311474000E2174 /* PhotosGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976297D1E311474000E2174 /* PhotosGalleryView.swift */; };
 		B98C369A1E2E222A0084EBB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B98C36991E2E222A0084EBB2 /* GoogleService-Info.plist */; };
+		B9AF485B1E3A2299000EB468 /* ExpandableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF485A1E3A2299000EB468 /* ExpandableTextView.swift */; };
+		B9B77C631E2FA279006775FA /* NotificationsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C621E2FA279006775FA /* NotificationsRootView.swift */; };
+		B9B77C651E2FAC46006775FA /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */; };
+		B9FA094D1E362DF500B9CCD0 /* FeedRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA094C1E362DF500B9CCD0 /* FeedRootView.swift */; };
+		B9FA094F1E362F3D00B9CCD0 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FA094E1E362F3D00B9CCD0 /* FeedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,14 +117,17 @@
 		7D86CF071DE5CD930089CB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D86CF091DE5CD930089CB20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		903839FE59AE1550461B71F9 /* Pods-APIConnector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIConnector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APIConnector/Pods-APIConnector.debug.xcconfig"; sourceTree = "<group>"; };
-		B9B77C621E2FA279006775FA /* NotificationsRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsRootView.swift; sourceTree = "<group>"; };
-		B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		B97629751E3111F7000E2174 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		B97629771E311254000E2174 /* PhotosGalleryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosGalleryVC.swift; sourceTree = "<group>"; };
 		B97629791E311299000E2174 /* PhotosGalleryVMProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosGalleryVMProtocol.swift; sourceTree = "<group>"; };
 		B976297B1E3112A7000E2174 /* PhotosGalleryVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosGalleryVM.swift; sourceTree = "<group>"; };
 		B976297D1E311474000E2174 /* PhotosGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosGalleryView.swift; sourceTree = "<group>"; };
 		B98C36991E2E222A0084EBB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B9AF485A1E3A2299000EB468 /* ExpandableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandableTextView.swift; sourceTree = "<group>"; };
+		B9B77C621E2FA279006775FA /* NotificationsRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsRootView.swift; sourceTree = "<group>"; };
+		B9B77C641E2FAC46006775FA /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		B9FA094C1E362DF500B9CCD0 /* FeedRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedRootView.swift; sourceTree = "<group>"; };
+		B9FA094E1E362F3D00B9CCD0 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		C120AADFC9CAC2966D037201 /* Pods-APIConnector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIConnector.release.xcconfig"; path = "Pods/Target Support Files/Pods-APIConnector/Pods-APIConnector.release.xcconfig"; sourceTree = "<group>"; };
 		EEBD2D4704D31944DD4262A5 /* Pods_DCgram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCgram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +193,8 @@
 			children = (
 				6AD5AFF31E252AA700533FE3 /* FeedCoordinator.swift */,
 				6AD5AFF71E252AC200533FE3 /* FeedRootVC.swift */,
+				B9FA094E1E362F3D00B9CCD0 /* FeedTableViewCell.swift */,
+				B9FA094C1E362DF500B9CCD0 /* FeedRootView.swift */,
 				6AD5AFF91E252ACE00533FE3 /* FeedRootVM.swift */,
 				6AD5AFFB1E252ADB00533FE3 /* FeedRootVMProtocol.swift */,
 			);
@@ -332,6 +340,7 @@
 				6AF841371DE73BA60075C6DB /* NotAuthenticated */,
 				6A26471A1DE72940005801A7 /* Root */,
 				6A10C1D61DEDAE08001A3BE2 /* SignIn */,
+				B9AF485A1E3A2299000EB468 /* ExpandableTextView.swift */,
 			);
 			path = DCgram;
 			sourceTree = "<group>";
@@ -506,7 +515,9 @@
 				6A0FC2911DF1A843001E9A50 /* AuthenticationProtocol.swift in Sources */,
 				6AF841391DE73BDB0075C6DB /* AuthenticatedCoordinator.swift in Sources */,
 				6A0FC2901DF1A840001E9A50 /* APIProtocol.swift in Sources */,
+				B9FA094F1E362F3D00B9CCD0 /* FeedTableViewCell.swift in Sources */,
 				6A26471F1DE72CF2005801A7 /* Coordinator.swift in Sources */,
+				B9FA094D1E362DF500B9CCD0 /* FeedRootView.swift in Sources */,
 				6A0FC28F1DF1A83B001E9A50 /* Business.swift in Sources */,
 				B976297E1E311474000E2174 /* PhotosGalleryView.swift in Sources */,
 				6AD5AFEA1E252A6B00533FE3 /* SearchCoordinator.swift in Sources */,
@@ -514,6 +525,7 @@
 				B9B77C631E2FA279006775FA /* NotificationsRootView.swift in Sources */,
 				6AD5AFE61E252A4200533FE3 /* NotificationsRootVM.swift in Sources */,
 				6A10C1D81DEDAE2F001A3BE2 /* SignInVC.swift in Sources */,
+				B9AF485B1E3A2299000EB468 /* ExpandableTextView.swift in Sources */,
 				6AD5AFF21E252A9B00533FE3 /* SearchRootVMProtocol.swift in Sources */,
 				B976297A1E311299000E2174 /* PhotosGalleryVMProtocol.swift in Sources */,
 				6AD5AFE21E252A2600533FE3 /* NotificationsNC.swift in Sources */,
